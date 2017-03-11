@@ -1,0 +1,39 @@
+@import "_mixin";
+
+.header{
+  height:100px;
+  background-color: #050707;
+  margin-bottom: 40px;
+  @include mediaQuery(small){
+    text-align: center;
+  }
+  img{
+    display: inline-block;
+    height: 100%;
+  }
+}
+
+.content{
+  margin-bottom: 100px;
+  .caption{
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .subcaption{
+    display:block;
+    margin-top: 50px;
+    font-size: 18px;
+  }
+  .incipit{
+    border:1px solid #aaa;
+    padding:20px;
+    background-color: #eee
+  }
+}
+
+.wrapper{
+  width: calc(100% - 40px);
+  max-width: 750px;
+  margin: auto;
+  height: 100%
+}

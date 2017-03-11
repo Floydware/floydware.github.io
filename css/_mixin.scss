@@ -1,0 +1,175 @@
+//colors
+$def-red:#B12626;
+
+//font
+$medium-text:12px;
+
+@mixin openRegular(){
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+}
+
+@mixin openBold(){
+	font-family: 'Open Sans', sans-serif;
+	font-weight:600;
+}
+
+/*mixin*/
+@mixin calc($property, $expression, $important:no) {
+  @if $important == important {
+    #{$property}: -moz-calc(#{$expression}) !important;
+    #{$property}: -webkit-calc(#{$expression}) !important;
+    #{$property}: calc(#{$expression}) !important;
+  }
+  @else {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+  }
+}
+
+@mixin prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin mediaQuery($bp){
+  /*breakpoints*/
+  $small:480px;
+  $medium:830px;
+  $big:1080px;
+
+  $min: min-width;
+  $max: max-width;
+
+  @if $bp == small{
+    @media only screen and ($max: $small){
+      @content;
+    }
+  }
+  @else if $bp == medium{
+    @media only screen and ($max: $medium){
+      @content;
+    }
+  }
+  @else if $bp == big{
+    @media only screen and ($max: $big){
+      @content;
+    }
+  }
+  @else if $bp == min-small{
+    @media only screen and ($min: $small){
+      @content;
+    }
+  }
+  @else if $bp == min-medium{
+    @media only screen and ($min: $medium){
+      @content;
+    }
+  }
+  @else if $bp == min-big{
+    @media only screen and ($min: $big){
+      @content;
+    }
+  }
+}
+
+@mixin clearfix{
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include prefix(transform, 'translate(-50%, -50%)');
+}
+
+@mixin image-fill{
+  object-fit: cover;
+  height:100%;
+  width:100%;
+  display:block;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font:{
+    family:inherit;
+    weight: inherit;
+    size: inherit;
+  }
+  color:inherit;
+  margin:0;
+  padding:0;
+  display:inline;
+}
+
+*{
+	box-sizing:border-box;
+}
+
+.noselect{
+	-webkit-touch-callout: none; /* iOS Safari */
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* IE/Edge */
+	user-select: none;
+}
+
+.noselect::selection{
+	background: white;
+}
+
+.noselect::-moz-selection{
+	background: white;
+}
+
+
+body{
+	@include openRegular;
+	font-size:14px;
+	margin:0;
+	padding:0;
+}
+
+.preload_img{
+	position:absolute;
+	top:-999999px;
+}
+
+.main{
+	width:100%;
+}
+
+ul{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+a, a:hover, a:active{
+	text-decoration:none;
+	color:inherit;
+}
+
+//custom
+
